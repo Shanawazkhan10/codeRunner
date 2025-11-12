@@ -15,7 +15,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
   executionTime,
   isRunning,
   onClear,
-  theme
+  // theme
 }) => {
   return (
     <div className="output-panel">
