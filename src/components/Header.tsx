@@ -1,10 +1,10 @@
 import React from 'react';
-// import { ProgrammingLanguage, Theme } from '../types';
+// import { ProgrammingLanguage, AppTheme } from '../types';
 import { LANGUAGE_CONFIG } from '../utils/languages';
-import type { ProgrammingLanguage, Theme } from '../types';
+import type { AppTheme, ProgrammingLanguage } from '../types';
 
 interface HeaderProps {
-  theme: Theme;
+  theme: AppTheme;
   toggleTheme: () => void;
   language: ProgrammingLanguage;
   onLanguageChange: (lang: ProgrammingLanguage) => void;

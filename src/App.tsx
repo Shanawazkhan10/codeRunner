@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import EditorPanel from './components/EditorPanel';
 import OutputPanel from './components/OutputPanel';
-// import MobileTabs from './components/MobileTabs';
+import MobileTabs from './components/MobileTabs';
 import { useCompiler } from './hooks/useCompiler';
 import { useTheme } from './hooks/useTheme';
-// import { useMobile } from './hooks/useMobile';
-// import { ProgrammingLanguage, Theme } from './types';
+import { useMobile } from './hooks/useMobile';
+// import { ProgrammingLanguage, AppTheme } from './types';
 import './styles/globals.css';
 import type { ProgrammingLanguage } from './types';
-import MobileTabs from './components/MobileTabs';
-import { useMobile } from './hooks/useMobile';
 
 const DEFAULT_CODE = `// Welcome to CodeRunner 🚀
 // Write your code here and click Run!

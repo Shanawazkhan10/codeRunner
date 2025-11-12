@@ -5,6 +5,9 @@ export type ProgrammingLanguage =
   | 'java' 
   | 'cpp';
 
+// Rename to avoid conflict with Monaco's Theme
+export type AppTheme = 'dark' | 'light';
+
 export interface CompilerResult {
   output: string;
   error: string;
@@ -18,5 +21,3 @@ export interface LanguageConfig {
   monacoLang: string;
   icon: string;
 }
-
-export type Theme = 'dark' | 'light';

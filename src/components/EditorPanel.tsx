@@ -1,16 +1,15 @@
 import React from 'react';
-import Editor, { type Theme } from '@monaco-editor/react';
-// import { ProgrammingLanguage, Theme } from '../types';
-// import { LANGUAGE_CONFIG } from '../utils/languages';
-import { SAMPLE_CODES } from '../utils/samples';
-import type { ProgrammingLanguage } from '../types';
+import Editor from '@monaco-editor/react';
+// import { ProgrammingLanguage, AppTheme } from '../types';
 import { LANGUAGE_CONFIG } from '../utils/languages';
+import { SAMPLE_CODES } from '../utils/samples';
+import type { AppTheme, ProgrammingLanguage } from '../types';
 
 interface EditorPanelProps {
   code: string;
   language: ProgrammingLanguage;
   onCodeChange: (code: string) => void;
-  theme: Theme;
+  theme: AppTheme;
 }
 
 const EditorPanel: React.FC<EditorPanelProps> = ({
@@ -22,6 +21,9 @@ const EditorPanel: React.FC<EditorPanelProps> = ({
   const loadSampleCode = () => {
     onCodeChange(SAMPLE_CODES[language]);
   };
+
+  // Convert our AppTheme to Monaco theme
+  const monacoTheme = theme === 'dark' ? 'vs-dark' : 'vs';
 
   return (
     <div className="editor-panel">
@@ -42,7 +44,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({
           language={LANGUAGE_CONFIG[language].monacoLang}
           value={code}
           onChange={(value) => onCodeChange(value || '')}
-          theme={theme === 'dark' ? 'vs-dark' : 'vs'}
+          theme={monacoTheme}
           options={{
             minimap: { enabled: true },
             fontSize: 14,
@@ -52,8 +54,6 @@ const EditorPanel: React.FC<EditorPanelProps> = ({
             padding: { top: 16 },
             lineNumbers: 'on',
             folding: true,
-            suggestOnTriggerCharacters: true,
-            parameterHints: { enabled: true }
           }}
         />
       </div>

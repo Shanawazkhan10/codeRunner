@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
-// import { ProgrammingLanguage, Theme } from '../types';
+// import { ProgrammingLanguage, AppTheme } from '../types';
 import { LANGUAGE_CONFIG } from '../utils/languages';
 import { SAMPLE_CODES } from '../utils/samples';
-import type { ProgrammingLanguage, Theme } from '../types';
+import type { AppTheme, ProgrammingLanguage } from '../types';
 
 interface MobileTabsProps {
   code: string;
@@ -13,7 +13,7 @@ interface MobileTabsProps {
   isRunning: boolean;
   onCodeChange: (code: string) => void;
   onClearOutput: () => void;
-  theme: Theme;
+  theme: AppTheme;
 }
 
 type ActiveTab = 'editor' | 'output';
@@ -34,7 +34,8 @@ const MobileTabs: React.FC<MobileTabsProps> = ({
     onCodeChange(SAMPLE_CODES[language]);
   };
 
-  const editorTheme = theme === 'dark' ? 'vs-dark' : 'vs';
+  // Convert our AppTheme to Monaco theme
+  const monacoTheme = theme === 'dark' ? 'vs-dark' : 'vs';
 
   return (
     <div className="mobile-container">
@@ -72,7 +73,7 @@ const MobileTabs: React.FC<MobileTabsProps> = ({
                 language={LANGUAGE_CONFIG[language].monacoLang}
                 value={code}
                 onChange={(value) => onCodeChange(value || '')}
-                theme={editorTheme}
+                theme={monacoTheme}
                 options={{
                   minimap: { enabled: false },
                   fontSize: 14,

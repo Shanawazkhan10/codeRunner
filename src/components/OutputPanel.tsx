@@ -1,13 +1,13 @@
-import type { Theme } from '@monaco-editor/react';
 import React from 'react';
-// import { Theme } from '../types';
+import type { AppTheme } from '../types';
+// import { AppTheme } from '../types';
 
 interface OutputPanelProps {
   output: string;
   executionTime: number;
   isRunning: boolean;
   onClear: () => void;
-  theme: Theme;
+  theme: AppTheme;
 }
 
 const OutputPanel: React.FC<OutputPanelProps> = ({
