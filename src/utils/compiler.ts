@@ -89,12 +89,15 @@ export class CodeCompiler {
     });
   }
 
-  private static async compilePython(code: string): Promise<CompilerResult> {
-    // Mock Python execution
-    return {
-      output: '🐍 Python support coming soon!\nTry JavaScript for now.',
-      error: '',
-      executionTime: performance.now() - performance.now()
-    };
-  }
+private static async compilePython(code: string): Promise<CompilerResult> {
+  // Mock Python execution
+  void code; // mark as intentionally unused
+
+  return {
+    output: '🐍 Python support coming soon!\nTry JavaScript for now.',
+    error: '',
+    executionTime: performance.now() - performance.now(),
+  };
+}
+
 }
